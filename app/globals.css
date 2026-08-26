@@ -73,7 +73,7 @@ body {
   position: absolute;
   border-radius: var(--card-radius);
   overflow: hidden;
-  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.60);
   outline: 2px solid rgba(255, 255, 255, 0.12);
   will-change: transform, opacity;
 }
@@ -106,9 +106,10 @@ body {
 }
 
 .hero-eyebrow {
-  letter-spacing: 0.18em;
-  color: rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.07em;
+  color: black;
   margin-bottom: 10px;
+  font-size: 1.1rem;
 }
 
 .hero-words-stack {
@@ -148,8 +149,10 @@ body {
 .hero-sub {
   margin-top: 22px;
   line-height: 1.7;
-  color: rgba(0, 0, 0, 0.6);
   text-align: center;
+  letter-spacing: 0.07em;
+  color: black;
+  font-size: 1.2rem;
 }
 
 .hero-cta {
