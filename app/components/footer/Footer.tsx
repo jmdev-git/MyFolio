@@ -42,7 +42,7 @@ export default function Footer() {
 
       {/* ── Logo — top center ── */}
       <div className="site-footer__logo-wrap">
-        <Image src="/Logo.png" alt="JMDev" width={110} height={30} className="site-footer__logo" />
+        <Image src="/Logo.png" alt="JMDev" width={150} height={40} className="site-footer__logo" />
       </div>
 
       {/* ── Center block ── */}

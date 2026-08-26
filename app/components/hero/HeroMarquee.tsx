@@ -12,7 +12,13 @@ export default function HeroMarquee() {
   const doubled = [...ITEMS, ...ITEMS]
 
   return (
-    <div className="marquee-wrapper" aria-hidden="true">
+    <motion.div
+      initial={{ opacity: 0, y: 32 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 1.1 }}
+      className="marquee-wrapper"
+      aria-hidden="true"
+    >
       <motion.div
         className="marquee-track"
         animate={{ x: ['0%', '-50%'] }}
@@ -25,6 +31,6 @@ export default function HeroMarquee() {
           </span>
         ))}
       </motion.div>
-    </div>
+    </motion.div>
   )
 }

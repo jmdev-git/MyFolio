@@ -11,10 +11,11 @@ export const CARD_DATA = [
     id: 'c1',
     src: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&q=80',
     alt: 'Code on dark screen',
-    style: { top: '5%', left: '5%', width: 190, height: 230 },
+    style: { top: '13%', left: '2%', width: 190, height: 230 },
     rotate: -4,
     exitX: -160,
     exitY: -100,
+    side: 'left' as const,
   },
   {
     id: 'c2',
@@ -24,6 +25,7 @@ export const CARD_DATA = [
     rotate: 3,
     exitX: -150,
     exitY: 50,
+    side: 'left' as const,
   },
   {
     id: 'c3',
@@ -33,6 +35,7 @@ export const CARD_DATA = [
     rotate: -2,
     exitX: -130,
     exitY: 130,
+    side: 'left' as const,
   },
   {
     id: 'c4',
@@ -42,15 +45,17 @@ export const CARD_DATA = [
     rotate: 5,
     exitX: -80,
     exitY: 170,
+    side: 'left' as const,
   },
   {
     id: 'c5',
     src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&q=80',
     alt: 'Laptop programming',
-    style: { top: '18%', left: '22%', width: 140, height: 160 },
+    style: { top: '13%', left: '22%', width: 140, height: 160 },
     rotate: -6,
     exitX: -100,
     exitY: -60,
+    side: 'left' as const,
   },
   // ── RIGHT COLUMN ─────────────────────────────────────────────
   {
@@ -61,6 +66,7 @@ export const CARD_DATA = [
     rotate: 3,
     exitX: 160,
     exitY: -100,
+    side: 'right' as const,
   },
   {
     id: 'c7',
@@ -70,6 +76,7 @@ export const CARD_DATA = [
     rotate: -5,
     exitX: 155,
     exitY: 30,
+    side: 'right' as const,
   },
   {
     id: 'c8',
@@ -79,6 +86,7 @@ export const CARD_DATA = [
     rotate: 4,
     exitX: 140,
     exitY: 100,
+    side: 'right' as const,
   },
   {
     id: 'c9',
@@ -88,6 +96,7 @@ export const CARD_DATA = [
     rotate: -3,
     exitX: 130,
     exitY: 150,
+    side: 'right' as const,
   },
   {
     id: 'c10',
@@ -97,6 +106,7 @@ export const CARD_DATA = [
     rotate: 6,
     exitX: 90,
     exitY: 60,
+    side: 'right' as const,
   },
 ]
 
@@ -155,6 +165,9 @@ function TiltCard({
         transformStyle: 'preserve-3d',
         pointerEvents: 'auto',
         willChange: 'transform',
+        boxShadow: card.side === 'left'
+          ? '-40px 6px 110px rgba(0,0,0,0.45)'
+          : '40px 6px 110px rgba(0,0,0,0.45)',
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
