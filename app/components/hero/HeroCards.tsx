@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useRef, useCallback } from 'react'
 
 // Positions spread evenly across left 28% and right 28% of viewport
 // top values distribute cards from ~5% to ~80% vertically
@@ -8,8 +9,8 @@ export const CARD_DATA = [
   // ── LEFT COLUMN ──────────────────────────────────────────────
   {
     id: 'c1',
-    src: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&q=80',
-    alt: 'Abstract gradient art',
+    src: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&q=80',
+    alt: 'Code on dark screen',
     style: { top: '5%', left: '5%', width: 190, height: 230 },
     rotate: -4,
     exitX: -160,
@@ -17,8 +18,8 @@ export const CARD_DATA = [
   },
   {
     id: 'c2',
-    src: 'https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=400&q=80',
-    alt: 'Portrait photography',
+    src: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80',
+    alt: 'Developer coding',
     style: { top: '45%', left: '20%', width: 165, height: 190 },
     rotate: 3,
     exitX: -150,
@@ -26,8 +27,8 @@ export const CARD_DATA = [
   },
   {
     id: 'c3',
-    src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
-    alt: 'Design mockup',
+    src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80',
+    alt: 'MacBook with code',
     style: { top: '60%', left: '5%', width: 195, height: 145 },
     rotate: -2,
     exitX: -130,
@@ -35,8 +36,8 @@ export const CARD_DATA = [
   },
   {
     id: 'c4',
-    src: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&q=80',
-    alt: 'Typography poster',
+    src: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&q=80',
+    alt: 'Dark code editor',
     style: { top: '80%', left: '22%', width: 175, height: 130 },
     rotate: 5,
     exitX: -80,
@@ -44,8 +45,8 @@ export const CARD_DATA = [
   },
   {
     id: 'c5',
-    src: 'https://images.unsplash.com/photo-1626544827763-d516dce335e2?w=400&q=80',
-    alt: 'Architecture',
+    src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&q=80',
+    alt: 'Laptop programming',
     style: { top: '18%', left: '22%', width: 140, height: 160 },
     rotate: -6,
     exitX: -100,
@@ -54,8 +55,8 @@ export const CARD_DATA = [
   // ── RIGHT COLUMN ─────────────────────────────────────────────
   {
     id: 'c6',
-    src: 'https://images.unsplash.com/photo-1637858868799-7f26a0640eb6?w=400&q=80',
-    alt: 'Product render',
+    src: 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&q=80',
+    alt: 'Laptop setup workspace',
     style: { top: '10%', right: '3%', width: 205, height: 140 },
     rotate: 3,
     exitX: 160,
@@ -63,8 +64,8 @@ export const CARD_DATA = [
   },
   {
     id: 'c7',
-    src: 'https://images.unsplash.com/photo-1569701813229-33284b643e3c?w=400&q=80',
-    alt: 'Creative poster',
+    src: 'https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?w=400&q=80',
+    alt: 'Programming on screen',
     style: { top: '35%', right: '2%', width: 185, height: 170 },
     rotate: -5,
     exitX: 155,
@@ -72,8 +73,8 @@ export const CARD_DATA = [
   },
   {
     id: 'c8',
-    src: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&q=80',
-    alt: 'Branding design',
+    src: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=400&q=80',
+    alt: 'Server and cloud setup',
     style: { top: '65%', right: '5%', width: 165, height: 140 },
     rotate: 4,
     exitX: 140,
@@ -81,8 +82,8 @@ export const CARD_DATA = [
   },
   {
     id: 'c9',
-    src: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&q=80',
-    alt: 'Motion design still',
+    src: 'https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=400&q=80',
+    alt: 'Code review',
     style: { top: '68%', right: '20%', width: 200, height: 155 },
     rotate: -3,
     exitX: 130,
@@ -99,28 +100,82 @@ export const CARD_DATA = [
   },
 ]
 
+// Max tilt angle in degrees
+const MAX_TILT = 14
+
+function TiltCard({
+  card,
+}: {
+  card: (typeof CARD_DATA)[number]
+}) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const rafRef = useRef<number | null>(null)
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const el = cardRef.current
+      if (!el) return
+
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
+
+      rafRef.current = requestAnimationFrame(() => {
+        const rect = el.getBoundingClientRect()
+        const x = (e.clientX - rect.left) / rect.width  // 0 → 1
+        const y = (e.clientY - rect.top) / rect.height   // 0 → 1
+
+        const tiltX = (y - 0.5) * -MAX_TILT  // tilt up/down
+        const tiltY = (x - 0.5) * MAX_TILT   // tilt left/right
+
+        el.style.transform = `rotate(${card.rotate}deg) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.06)`
+        el.style.transition = 'transform 0.05s linear'
+      })
+    },
+    [card.rotate],
+  )
+
+  const handleMouseLeave = useCallback(() => {
+    const el = cardRef.current
+    if (!el) return
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
+    }
+    el.style.transform = `rotate(${card.rotate}deg) rotateX(0deg) rotateY(0deg) scale(1)`
+    el.style.transition = 'transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)'
+  }, [card.rotate])
+
+  return (
+    <div
+      ref={cardRef}
+      data-hero-card
+      className="hero-card"
+      style={{
+        ...card.style,
+        transform: `rotate(${card.rotate}deg)`,
+        transformStyle: 'preserve-3d',
+        pointerEvents: 'auto',
+        willChange: 'transform',
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Image
+        src={card.src}
+        alt={card.alt}
+        width={card.style.width}
+        height={card.style.height}
+        className="hero-card__img"
+        unoptimized
+      />
+    </div>
+  )
+}
+
 export default function HeroCards() {
   return (
     <div className="hero-cards-layer" aria-hidden="true">
       {CARD_DATA.map((card) => (
-        <div
-          key={card.id}
-          data-hero-card
-          className="hero-card"
-          style={{
-            ...card.style,
-            transform: `rotate(${card.rotate}deg)`,
-          }}
-        >
-          <Image
-            src={card.src}
-            alt={card.alt}
-            width={card.style.width}
-            height={card.style.height}
-            className="hero-card__img"
-            unoptimized
-          />
-        </div>
+        <TiltCard key={card.id} card={card} />
       ))}
     </div>
   )

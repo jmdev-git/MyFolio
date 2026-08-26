@@ -75,22 +75,21 @@ export default function ProjectsSection() {
       {/* Heading */}
       <div ref={headingRef} className="projects-heading">
         <motion.h2
-          className="projects-title"
+          className="projects-title text-shadow-lg"
           initial={{ opacity: 0, y: 30 }}
           animate={headingInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          CLient's
-          <span className="projects-title--accent"> Projects</span>
+          Featured Projects
         </motion.h2>
-        <motion.p
+        {/* <motion.p
           className="projects-subtitle"
           initial={{ opacity: 0, y: 20 }}
           animate={headingInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
         >
           Each one solves a real problem.
-        </motion.p>
+        </motion.p> */}
       </div>
 
       {/* 3D perspective wrapper */}

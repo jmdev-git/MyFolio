@@ -13,6 +13,32 @@ const NAV_LINKS = [
   { label: 'FAQs', href: '#FAQs' },
 ]
 
+// Text-loop hover: label slides up on hover, clone slides in from below
+function LoopLink({
+  href,
+  label,
+  dark,
+}: {
+  href: string
+  label: string
+  dark: boolean
+}) {
+  return (
+    <Link
+      href={href}
+      className={`nav-loop-link ${dark ? 'nav-loop-link--dark' : 'nav-loop-link--light'}`}
+      aria-label={label}
+    >
+      <span className="nav-loop-link__inner" aria-hidden="true">
+        <span className="nav-loop-link__top">{label}</span>
+        <span className="nav-loop-link__bottom">{label}</span>
+      </span>
+      {/* accessible text */}
+      <span className="sr-only">{label}</span>
+    </Link>
+  )
+}
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [visible, setVisible] = useState(true)
@@ -81,12 +107,11 @@ export default function Header() {
             >
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link
+                  <LoopLink
                     href={link.href}
-                    className={`site-nav__link ${atTop ? 'site-nav__link--dark' : 'site-nav__link--light'}`}
-                  >
-                    {link.label}
-                  </Link>
+                    label={link.label}
+                    dark={atTop}
+                  />
                 </li>
               ))}
             </motion.ul>
@@ -102,7 +127,7 @@ export default function Header() {
                 href="#contact"
                 className={`site-nav__cta ${atTop ? 'site-nav__cta--dark' : 'site-nav__cta--light'}`}
               >
-                Get In Touch
+                Get In Touch &rarr;
               </Link>
             </motion.div>
 

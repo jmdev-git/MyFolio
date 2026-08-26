@@ -12,13 +12,13 @@ export default function HeroHeadline() {
       </div>
 
       <p className="hero-sub font-bold">
-        I Design, Code, and Deploy
+        I design, code, and deploy
         <br />
-        Full-stack digital solutions.
+        full-stack digital solutions.
       </p>
 
       <a href="#" className="hero-cta">
-        Download Resume <span aria-hidden="true"></span>
+         Download Resume &rarr;
       </a>
     </div>
   )
