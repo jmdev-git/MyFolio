@@ -49,8 +49,8 @@ export default function HeroHeadline() {
         full-stack digital solutions.
       </p>
 
-      <a href="/John Mark Depaclayon.pdf" download="John Mark Depaclayon.pdf" className="hero-cta">
-        Download Resume &rarr;
+      <a href="#projects" className="hero-cta">
+        Get to Know Me &rarr;
       </a>
     </div>
   )
