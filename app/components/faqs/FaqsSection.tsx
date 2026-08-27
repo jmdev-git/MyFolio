@@ -43,7 +43,7 @@ export default function FaqsSection() {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        Here are the basics.
+        What you need to know.
       </motion.h2>
 
       <motion.div

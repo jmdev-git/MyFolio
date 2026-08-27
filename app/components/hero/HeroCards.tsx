@@ -9,7 +9,7 @@ export const CARD_DATA = [
   // ── LEFT COLUMN ──────────────────────────────────────────────
   {
     id: 'c1',
-    src: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&q=80',
+    src: 'Graduate1.jpg',
     alt: 'Code on dark screen',
     style: { top: '13%', left: '2%', width: 190, height: 230 },
     rotate: -4,
@@ -19,7 +19,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c2',
-    src: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80',
+    src: 'CNT Cloudspace.jpg',
     alt: 'Developer coding',
     style: { top: '45%', left: '20%', width: 165, height: 190 },
     rotate: 3,
@@ -29,7 +29,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c3',
-    src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80',
+    src: 'KidsPhonics.jpg',
     alt: 'MacBook with code',
     style: { top: '60%', left: '5%', width: 195, height: 145 },
     rotate: -2,
@@ -39,7 +39,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c4',
-    src: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&q=80',
+    src: 'Prism.jpg',
     alt: 'Dark code editor',
     style: { top: '80%', left: '22%', width: 175, height: 130 },
     rotate: 5,
@@ -49,7 +49,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c5',
-    src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&q=80',
+    src: "Domino's Self-Order Kiosk.jpg",
     alt: 'Laptop programming',
     style: { top: '13%', left: '22%', width: 140, height: 160 },
     rotate: -6,
@@ -60,7 +60,7 @@ export const CARD_DATA = [
   // ── RIGHT COLUMN ─────────────────────────────────────────────
   {
     id: 'c6',
-    src: 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&q=80',
+    src: 'Egov_hackathon.jpg',
     alt: 'Laptop setup workspace',
     style: { top: '10%', right: '3%', width: 205, height: 140 },
     rotate: 3,
@@ -70,7 +70,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c7',
-    src: 'https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?w=400&q=80',
+    src: 'Graduate2.jpg',
     alt: 'Programming on screen',
     style: { top: '35%', right: '2%', width: 185, height: 170 },
     rotate: -5,
@@ -80,7 +80,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c8',
-    src: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=400&q=80',
+    src: 'BMIS.jpg',
     alt: 'Server and cloud setup',
     style: { top: '65%', right: '5%', width: 165, height: 140 },
     rotate: 4,
@@ -90,7 +90,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c9',
-    src: 'https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=400&q=80',
+    src: 'Laksikap.jpg',
     alt: 'Code review',
     style: { top: '68%', right: '20%', width: 200, height: 155 },
     rotate: -3,
@@ -107,6 +107,7 @@ export const CARD_DATA = [
     exitX: 90,
     exitY: 60,
     side: 'right' as const,
+    external: true,
   },
 ]
 
@@ -173,12 +174,14 @@ function TiltCard({
       onMouseLeave={handleMouseLeave}
     >
       <Image
-        src={card.src}
+        src={card.external ? card.src : `/${card.src}`}
         alt={card.alt}
         width={card.style.width}
         height={card.style.height}
         className="hero-card__img"
-        unoptimized
+        style={{ objectFit: 'cover' }}
+        priority={!card.external}
+        unoptimized={!!card.external}
       />
     </div>
   )

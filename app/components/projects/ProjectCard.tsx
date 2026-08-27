@@ -17,18 +17,18 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {/* Image */}
       <div className="project-card__img-wrap">
         <Image
-          src={project.image}
+          src={`/${project.image}`}
           alt={project.title}
           fill
           className="project-card__img"
-          unoptimized
+          priority
         />
       </div>
 
       {/* Content */}
       <div className="project-card__body">
         <h3 className="project-card__title">{project.title}</h3>
-        <p className="project-card__desc">{project.description}</p>
+        <p className="project-card__desc line-clamp-3">{project.description}</p>
 
         <div className="project-card__tags">
           {project.tags.map((tag) => (

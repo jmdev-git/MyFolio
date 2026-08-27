@@ -746,6 +746,56 @@ body {
 }
 
 /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ 3D perspective wrapper ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+/* ── Projects coming soon ── */
+.projects-coming-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 60px auto 0;
+  padding: 16px 36px;
+  background: var(--black);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Infinite spotlight shimmer sweep */
+.projects-coming-soon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.15) 70%,
+    transparent 100%
+  );
+  filter: blur(4px);
+  animation: coming-soon-shimmer 3.5s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: 100px;
+}
+
+@keyframes coming-soon-shimmer {
+  0%   { left: -75%; opacity: 0; }
+  5%   { opacity: 1; }
+  60%  { left: 125%; opacity: 1; }
+  61%  { opacity: 0; }
+  100% { left: 125%; opacity: 0; }
+}
+
 .projects-perspective {
   perspective: 1200px;
   perspective-origin: center top;
@@ -824,7 +874,6 @@ body {
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.45);
   margin-bottom: 16px;
-  flex: 1;
 }
 
 .project-card__tags {

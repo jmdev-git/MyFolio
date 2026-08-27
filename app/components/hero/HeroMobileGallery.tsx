@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CARD_DATA } from './HeroCards'
 
-const SRCS = CARD_DATA.map((c) => ({ src: c.src, alt: c.alt }))
+const SRCS = CARD_DATA.map((c) => ({ src: c.external ? c.src : `/${c.src}`, alt: c.alt, external: c.external }))
 
 const INTERVAL = 5500 // ms each image stays visible before changing
 
@@ -51,7 +51,7 @@ function GallerySlot({ startIdx, delay }: { startIdx: number; delay: number }) {
             alt={img.alt}
             fill
             className="hmg-slot__img"
-            unoptimized
+            unoptimized={!!img.external}
           />
         </motion.div>
       </AnimatePresence>

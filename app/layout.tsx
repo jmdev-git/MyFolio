@@ -27,7 +27,7 @@ const luckiestGuy = Luckiest_Guy({
 });
 
 export const metadata: Metadata = {
-  title: "JMDev - Fullstack Developer",
+  title: "JMDev — Fullstack Developer",
   description: "Full Stack Web Developer portfolio showcasing modern, fast, and responsive web applications built with Next.js.",
   icons: {
     icon: "/TabLogo.png",

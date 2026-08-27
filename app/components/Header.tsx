@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '#' },
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contacts', href: '#contacts' },
   { label: 'FAQs', href: '#FAQs' },
 ]
 
@@ -142,16 +142,15 @@ export default function Header() {
                 {menuOpen ? (
                   /* X icon */
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <line x1="2" y1="2" x2="18" y2="18" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
-                    <line x1="18" y1="2" x2="2" y2="18" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+                    <line x1="2" y1="2" x2="18" y2="18" stroke={atTop ? 'black' : 'white'} strokeWidth="2.5" strokeLinecap="round"/>
+                    <line x1="18" y1="2" x2="2" y2="18" stroke={atTop ? 'black' : 'white'} strokeWidth="2.5" strokeLinecap="round"/>
                   </svg>
                 ) : (
-                  /* Hamburger bars */
-                  <>
-                    <span className={atTop ? 'bg-black' : 'bg-white'} />
-                    <span className={atTop ? 'bg-black' : 'bg-white'} />
-                    <span className={atTop ? 'bg-black' : 'bg-white'} />
-                  </>
+                  /* 2-line minimal hamburger — top line shorter, right-aligned */
+                  <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="6" y1="2" x2="22" y2="2" stroke={atTop ? 'black' : 'white'} strokeWidth="2.5" strokeLinecap="round"/>
+                    <line x1="0" y1="12" x2="22" y2="12" stroke={atTop ? 'black' : 'white'} strokeWidth="2.5" strokeLinecap="round"/>
+                  </svg>
                 )}
               </button>
             </motion.nav>
