@@ -21,51 +21,30 @@ export default function ProjectsSection() {
     if (!grid || !section) return
 
     const ctx = gsap.context(() => {
-      const isMobile = window.matchMedia('(max-width: 600px)').matches
+      const isMobile = window.matchMedia('(max-width: 1024px)').matches
 
-      // 3D tilt unwind — reduced on mobile
+      // Skip 3D effect entirely on mobile — Framer Motion handles card animations
+      if (isMobile) {
+        gsap.set(grid, { rotateX: 0, scale: 1, opacity: 1 })
+        return
+      }
+
+      // 3D tilt unwind on the grid wrapper — desktop only
       gsap.fromTo(
         grid,
+        { rotateX: 28, scale: 0.82, opacity: 0.25, transformOrigin: 'center top' },
         {
-          rotateX: isMobile ? 8 : 28,
-          scale: isMobile ? 0.95 : 0.82,
-          opacity: isMobile ? 0.6 : 0.25,
-          transformOrigin: 'center top',
-        },
-        {
-          rotateX: 0,
-          scale: 1,
-          opacity: 1,
+          rotateX: 0, scale: 1, opacity: 1,
           transformOrigin: 'center top',
           ease: 'none',
           scrollTrigger: {
             trigger: section,
             start: 'top 90%',
             end: 'center 50%',
-            scrub: isMobile ? 1 : 2.5,
+            scrub: 2.5,
           },
         }
       )
-
-      // Stagger each card fading up
-      const cards = grid.querySelectorAll('.project-card')
-      cards.forEach((card) => {
-        gsap.fromTo(
-          card,
-          { y: isMobile ? 30 : 60, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 92%',
-              end: 'top 60%',
-              scrub: isMobile ? 0.8 : 1.5,
-            },
-          }
-        )
-      })
     }, section)
 
     return () => ctx.revert()

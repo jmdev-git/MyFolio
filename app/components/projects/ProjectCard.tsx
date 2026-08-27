@@ -1,6 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import type { Project } from '@/app/data/projects'
 
 interface ProjectCardProps {
@@ -8,11 +10,18 @@ interface ProjectCardProps {
   index: number
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, index }: ProjectCardProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+
   return (
-    <div
+    <motion.div
+      ref={ref}
       className="project-card"
-      style={{ '--accent': project.accent, opacity: 0 } as React.CSSProperties}
+      style={{ '--accent': project.accent } as React.CSSProperties}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.55, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
     >
       {/* Image */}
       <div className="project-card__img-wrap">
@@ -64,6 +73,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
