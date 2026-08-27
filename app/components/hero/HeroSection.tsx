@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroHeadline from './HeroHeadline'
 import HeroCards from './HeroCards'
 import HeroMarquee from './HeroMarquee'
+import HeroMobileGallery from './HeroMobileGallery'
 import { CARD_DATA } from './HeroCards'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -16,6 +17,9 @@ export default function HeroSection() {
   useEffect(() => {
     const section = sectionRef.current
     if (!section) return
+
+    // Skip scroll animation on tablet/mobile where cards are hidden
+    if (window.matchMedia('(max-width: 1024px)').matches) return
 
     const cards = gsap.utils.toArray<HTMLElement>('[data-hero-card]')
 
@@ -54,12 +58,17 @@ export default function HeroSection() {
         {/* Grid texture */}
         <div className="hero-grid" aria-hidden="true" />
 
-        {/* Floating image cards */}
+        {/* Floating image cards (desktop/tablet) */}
         <HeroCards />
 
         {/* Center headline */}
         <div className="hero-center">
           <HeroHeadline />
+        </div>
+
+        {/* Mobile image gallery — shown only on ≤ 600px, wrapper centers it */}
+        <div className="hmg-wrapper">
+          <HeroMobileGallery />
         </div>
 
         {/* Bottom marquee */}

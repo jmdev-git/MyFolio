@@ -21,14 +21,15 @@ export default function ProjectsSection() {
     if (!grid || !section) return
 
     const ctx = gsap.context(() => {
-      // 3D tilt unwind — starts when section enters view, ends much later
-      // so the effect plays out over a long scroll distance
+      const isMobile = window.matchMedia('(max-width: 600px)').matches
+
+      // 3D tilt unwind — reduced on mobile
       gsap.fromTo(
         grid,
         {
-          rotateX: 28,
-          scale: 0.82,
-          opacity: 0.25,
+          rotateX: isMobile ? 8 : 28,
+          scale: isMobile ? 0.95 : 0.82,
+          opacity: isMobile ? 0.6 : 0.25,
           transformOrigin: 'center top',
         },
         {
@@ -39,19 +40,19 @@ export default function ProjectsSection() {
           ease: 'none',
           scrollTrigger: {
             trigger: section,
-            start: 'top 90%',   // begins as soon as section peeks into view
-            end: 'center 50%',  // finishes when section center hits mid-screen
-            scrub: 2.5,         // higher = more lag = slower/smoother feel
+            start: 'top 90%',
+            end: 'center 50%',
+            scrub: isMobile ? 1 : 2.5,
           },
         }
       )
 
-      // Stagger each card fading up — spread over a longer window too
+      // Stagger each card fading up
       const cards = grid.querySelectorAll('.project-card')
-      cards.forEach((card, i) => {
+      cards.forEach((card) => {
         gsap.fromTo(
           card,
-          { y: 60, opacity: 0 },
+          { y: isMobile ? 30 : 60, opacity: 0 },
           {
             y: 0,
             opacity: 1,
@@ -60,7 +61,7 @@ export default function ProjectsSection() {
               trigger: card,
               start: 'top 92%',
               end: 'top 60%',
-              scrub: 1.5,
+              scrub: isMobile ? 0.8 : 1.5,
             },
           }
         )
@@ -82,14 +83,14 @@ export default function ProjectsSection() {
         >
           Featured Projects
         </motion.h2>
-        {/* <motion.p
+        <motion.p
           className="projects-subtitle"
           initial={{ opacity: 0, y: 20 }}
           animate={headingInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
         >
-          Each one solves a real problem.
-        </motion.p> */}
+          Explore software solutions designed to streamline workflows, improve operations, and solve real business challenges.
+        </motion.p>
       </div>
 
       {/* 3D perspective wrapper */}

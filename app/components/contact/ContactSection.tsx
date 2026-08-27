@@ -66,8 +66,8 @@ export default function ContactSection() {
       <div className="ct-card" ref={ref}>
 
         <motion.p className="ct-quote" {...fadeUpProps(0, inView)}>
-          &ldquo; Got a project in mind? Let&apos;s bring your vision to life and build<br />
-          something remarkable together. &rdquo;
+          &ldquo;Got a project in mind? Let&apos;s bring your vision to life and build<br />
+          something remarkable together.&rdquo;
         </motion.p>
 
         <motion.div className="ct-avatar-wrap" {...fadeUpProps(0.1, inView)}>

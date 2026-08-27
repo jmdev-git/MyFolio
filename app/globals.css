@@ -179,6 +179,214 @@ body {
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
 }
 
+/* ── Hero Responsive ─────────────────────────────────────────────────────── */
+
+/* Large tablet / small laptop (≤ 1100px) — gentle card scale */
+@media (max-width: 1100px) {
+  .hero-section {
+    height: 200vh;
+  }
+
+  .hero-cards-layer {
+    transform: scale(0.82);
+    transform-origin: top left;
+  }
+}
+
+/* ≤ 1024px — switch to full mobile layout (iPad Mini, iPad Pro, Nest Hub, Surface Duo) */
+@media (max-width: 1024px) {
+  .hero-section {
+    height: auto;
+  }
+
+  .hero-viewport {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-cards-layer {
+    display: none;
+  }
+
+  .hero-center {
+    position: relative;
+    inset: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 120px;
+    padding-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .hero-word {
+    font-size: clamp(3rem, 9vw, 5.5rem);
+  }
+
+  .hero-eyebrow {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-words-stack {
+    gap: 4px;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    margin-top: 18px;
+    line-height: 1.65;
+  }
+
+  .hero-cta {
+    margin-top: 24px;
+    padding: 14px 30px;
+    font-size: 0.75rem;
+  }
+
+  .marquee-text,
+  .marquee-sep {
+    font-size: 2rem;
+  }
+
+  .marquee-wrapper {
+    position: relative;
+    height: 42px;
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+}
+
+/* Mobile (≤ 600px) — tighter type sizes */
+@media (max-width: 600px) {
+  .hero-word {
+    font-size: clamp(3rem, 13vw, 3.8rem);
+  }
+
+  .hero-center {
+    padding-top: 100px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .hero-words-stack {
+    gap: 2px;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  .hero-cta {
+    margin-top: 22px;
+    padding: 13px 26px;
+    font-size: 0.72rem;
+  }
+
+  .marquee-text,
+  .marquee-sep {
+    font-size: 1.5rem;
+  }
+
+  .marquee-wrapper {
+    height: 36px;
+  }
+}
+
+/* ── Mobile gallery grid ──────────────────────────────────────────────────── */
+.hmg-wrapper {
+  display: none; /* hidden on desktop */
+}
+
+@media (max-width: 1024px) {
+  .hmg-wrapper {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.hmg-grid {
+  display: none; /* hidden on desktop */
+}
+
+@media (max-width: 1024px) {
+  .hmg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 120px);
+    gap: 8px;
+    padding: 0 24px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .hmg-grid {
+    grid-template-rows: repeat(2, 100px);
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hmg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
+    gap: 8px;
+    padding: 16px 16px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+}
+
+.hmg-slot {
+  position: relative;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+}
+
+/* Outer corners only:
+   col1-row1 = slot 1  → top-left corner
+   col2 full = slot 2  → all 4 outer corners (tall center card)
+   col3-row1 = slot 3  → top-right corner
+   col1-row2 = slot 4  → bottom-left corner
+   col3-row2 = slot 5  → bottom-right corner */
+.hmg-slot:nth-child(1) { border-top-left-radius: 12px; }
+.hmg-slot:nth-child(2) { border-radius: 0; }
+.hmg-slot:nth-child(3) { border-top-right-radius: 12px; }
+.hmg-slot:nth-child(4) { border-bottom-left-radius: 12px; }
+.hmg-slot:nth-child(5) { border-bottom-right-radius: 12px; }
+
+/* Make slot 2 (center column) span both rows */
+.hmg-slot:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+.hmg-slot__inner {
+  position: absolute;
+  inset: 0;
+}
+
+.hmg-slot__img {
+  object-fit: cover;
+}
+
 /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Marquee ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
 .marquee-wrapper {
   position: absolute;
@@ -232,7 +440,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 300;
   padding: 10px 20px;
   pointer-events: none;
 }
@@ -441,10 +649,12 @@ body {
 
 /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Mobile drawer ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
 .site-nav__mobile {
+  position: fixed;
+  inset: 0;
   background: var(--black);
-  margin: 0 0;
-  padding: 20px 32px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 100px 40px 40px;
+  z-index: 200;
+  overflow-y: auto;
 }
 
 .site-nav__mobile ul {
@@ -468,7 +678,11 @@ body {
 }
 
 .site-nav__mobile-link:hover {
-  opacity: 0.6;
+  opacity: 0.5;
+}
+
+.site-nav__mobile .site-nav__cta {
+  margin-top: 16px;
 }
 
 /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Responsive ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
@@ -524,7 +738,7 @@ body {
 }
 
 .projects-subtitle {
-  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  font-size: 1.2rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.45);
   max-width: 420px;
@@ -650,6 +864,21 @@ body {
   opacity: 0.6;
 }
 
+.project-card__private {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  cursor: default;
+  user-select: none;
+}
+
 /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Responsive ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
 @media (max-width: 900px) {
   .projects-list {
@@ -658,13 +887,26 @@ body {
 }
 
 @media (max-width: 600px) {
+  .projects-section {
+    padding: 80px 0;
+  }
+
   .projects-list {
     grid-template-columns: 1fr;
-    padding: 0 24px;
+    padding: 0;
+    gap: 0;
   }
 
   .projects-heading {
     padding: 0 24px;
+    margin-bottom: 40px;
+  }
+
+  /* Full-width cards — remove all horizontal borders and radius so they feel edge-to-edge */
+  .project-card {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
   }
 }
 
@@ -1019,11 +1261,12 @@ body {
 
 /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Heading ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
 .ct-title {
-    font-family: var(--font-luckiest), cursive;
-  font-size: clamp(2.4rem, 5vw, 3rem);
+  font-family: var(--font-luckiest), cursive;
+  font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.06;
   color: var(--black);
   margin-bottom: 24px;
+  white-space: nowrap;
 }
 
 /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Body ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
@@ -1047,9 +1290,17 @@ body {
   font-style: normal;
 }
 
+@media (max-width: 600px) {
+  .ct-quote {
+    font-size: 1.3rem;
+    max-width: 90%;
+    padding: 0 4px;
+  }
+}
+
 /* â”€â”€ Name in Luckiest Guy â”€â”€ */
 .ct-name {
-  font-size: clamp(1.6rem, 3vw, 1.6rem);
+  font-size: clamp(1.5rem, 3vw, 1.6rem);
   font-weight: 700;
   color: var(--black);
   margin-bottom: 6px;
@@ -1118,6 +1369,27 @@ body {
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
+/* On mobile — shrink pills so all 4 fit on one row */
+@media (max-width: 600px) {
+  .ct-socials {
+    flex-wrap: nowrap;
+    gap: 5px;
+  }
+
+  .ct-social {
+    padding: 5px 8px;
+    font-size: 0.7rem;
+    gap: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .ct-social svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+}
+
 .ct-social:hover {
   background: rgba(0, 0, 0, 0.16);
   transform: translateY(-2px);
@@ -1147,7 +1419,7 @@ body {
 
 .faqs-title {
   font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.04em;
   color: var(--white);
   text-align: center;
@@ -1276,6 +1548,12 @@ body {
   color: var(--black);
   max-width: 780px;
   margin-bottom: 40px;
+}
+
+@media (max-width: 600px) {
+  .cta-banner__body {
+    line-height: 1.55;
+  }
 }
 
 .cta-banner__body strong {
