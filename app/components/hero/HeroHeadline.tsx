@@ -50,7 +50,7 @@ export default function HeroHeadline() {
       </p>
 
       <a href="#projects" className="hero-cta">
-        Get to Know Me &rarr;
+        Explore the Project &rarr;
       </a>
     </div>
   )

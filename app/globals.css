@@ -1452,6 +1452,10 @@ body {
     height: 13px;
     flex-shrink: 0;
   }
+
+  .ct-quote {
+    max-width: 100%;
+  }
 }
 
 .ct-social:hover {
@@ -2201,6 +2205,7 @@ body {
   justify-content: center;
   z-index: 10;
   flex-shrink: 0;
+  margin-bottom: 28px;
 }
 
 .about-carousel__dot {

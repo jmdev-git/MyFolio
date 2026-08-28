@@ -9,7 +9,7 @@ export const CARD_DATA = [
   // ── LEFT COLUMN ──────────────────────────────────────────────
   {
     id: 'c1',
-    src: 'Graduate1.jpg',
+    src: 'Profile4.jpg',
     alt: 'Code on dark screen',
     style: { top: '13%', left: '2%', width: 190, height: 230 },
     rotate: -4,
@@ -70,7 +70,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c7',
-    src: 'Graduate2.jpg',
+    src: 'Profile6.jpg',
     alt: 'Programming on screen',
     style: { top: '35%', right: '2%', width: 185, height: 170 },
     rotate: -5,
@@ -100,7 +100,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c10',
-    src: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&q=80',
+    src: 'Profile5.jpg',
     alt: 'Tech workspace',
     style: { top: '34%', right: '20%', width: 150, height: 130 },
     rotate: 6,
