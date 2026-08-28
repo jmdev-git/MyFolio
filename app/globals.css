@@ -1353,8 +1353,11 @@ body {
 @media (max-width: 600px) {
   .ct-quote {
     font-size: 1.3rem;
-    max-width: 95%;
+    max-width: 100%;
     padding: 0 4px;
+  }
+  .ct-marquee__word {
+    opacity: 40%;
   }
 }
 
@@ -1904,6 +1907,9 @@ body {
   .site-footer__copy {
     justify-content: center;
     text-align: center;
+  }
+  .site-footer__nav-link {
+    font-size: 0.8rem;
   }
 }
 
