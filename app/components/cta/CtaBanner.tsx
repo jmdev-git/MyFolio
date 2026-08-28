@@ -5,9 +5,7 @@ export default function CtaBanner() {
       <p className="cta-banner__eyebrow">Recruiters, Founders & Business Owners Welcome</p>
 
       <p className="cta-banner__body">
-        <strong>JMDev</strong> is where fast web apps are built the right way.
-        From designing the database layout to launching the live website,
-        I handle the entire process so you can ship your product to customers quickly.
+        <strong>JMDev</strong> builds digital solutions that help businesses work smarter and grow with confidence. I turn ideas, manual processes, and everyday challenges into simple, reliable products that create real value for the people who use them.
       </p>
 
       <a href="#contact" className="cta-banner__btn">
