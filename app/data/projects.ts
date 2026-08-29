@@ -79,4 +79,16 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/jmdev-git/Laksikap',
     accent: '#00b4d8',
   },
+  {
+    id: 'p7',
+    title: 'ATS Resume Scanner',
+    description:
+      'A mobile HR tool that scans physical resumes, extracts applicant information using on-device AI, generates digital records and PDFs, and syncs verified applicants to an ATS—even while fully offline.',
+    tags: ['Flutter', 'Dart', 'MediaPipe + Gemma 2', 'Google ML Kit', 'Isar', 'pdf'],
+    year: '2023',
+    image: 'ATS_Scanner.jpg',
+    link: '#',
+    accent: '#00b4d8',
+    private: true
+  },
 ]

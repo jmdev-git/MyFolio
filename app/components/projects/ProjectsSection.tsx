@@ -22,29 +22,8 @@ export default function ProjectsSection() {
 
     const ctx = gsap.context(() => {
       const isMobile = window.matchMedia('(max-width: 1024px)').matches
-
-      // Skip 3D effect entirely on mobile — Framer Motion handles card animations
-      if (isMobile) {
-        gsap.set(grid, { rotateX: 0, scale: 1, opacity: 1 })
-        return
-      }
-
-      // 3D tilt unwind on the grid wrapper — desktop only
-      gsap.fromTo(
-        grid,
-        { rotateX: 28, scale: 0.82, opacity: 0.25, transformOrigin: 'center top' },
-        {
-          rotateX: 0, scale: 1, opacity: 1,
-          transformOrigin: 'center top',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 90%',
-            end: 'center 50%',
-            scrub: 2.5,
-          },
-        }
-      )
+      // Cards are animated by Framer Motion useInView — no GSAP needed
+      gsap.set(grid, { opacity: 1 })
     }, section)
 
     return () => ctx.revert()

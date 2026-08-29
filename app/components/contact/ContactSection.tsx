@@ -63,6 +63,9 @@ export default function ContactSection() {
 
       <MarqueeText reverse={false} atBottom={false} />
 
+      {/* Blurred glow circle at center */}
+      <div className="ct-glow" aria-hidden="true" />
+
       <div className="ct-card" ref={ref}>
 
         <motion.p className="ct-quote" {...fadeUpProps(0, inView)}>
