@@ -91,4 +91,28 @@ export const PROJECTS: Project[] = [
     accent: '#00b4d8',
     private: true
   },
+  {
+    id: 'p8',
+    title: 'Handocs',
+    description:
+      'A developer handover documentation tool that centralizes system architecture, API references, technical decisions, environment setup, deployment details, and service information into one structured handover document.',
+    tags: ['Nextjs', 'Neon', 'ReactFlow', 'Typescript', 'Tailwind CSS', 'Nextauth'],
+    year: '2023',
+    image: 'Handocs.jpg',
+    link: '#',
+    accent: '#00b4d8',
+    private: true
+  },
+  {
+    id: 'p9',
+    title: 'Pulse',
+    description:
+      'A company social platform that centralizes announcements, memos, events, livestreams, polls, and team interactions, helping organizations stay informed, connected, and engaged in one place.',
+    tags: ['Nextjs', 'Postgresql', 'Docker', 'Typescript', 'Nginx', 'WebRTC', 'HLS', 'MediaMTX', 'Websocket', 'Redis'],
+    year: '2023',
+    image: 'Pulse.jpg',
+    link: '#',
+    accent: '#00b4d8',
+    private: true
+  },
 ]
