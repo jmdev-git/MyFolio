@@ -41,7 +41,7 @@ export const PROJECTS: Project[] = [
       'A centralized barangay management system that digitizes resident records, blotter reports, clearance requests, census data, announcements, and document generation through an easy-to-manage admin dashboard and resident portal.',
     tags: ['Laravel', 'PHP', 'MySQL', 'REST API', 'Docker', 'Vite', 'Alpine.js', 'Tailwind CSS'],
     year: '2024',
-    image: 'BMIS.jpg',
+    image: 'BMIS1.jpg',
     link: 'https://github.com/jmdev-git/barangay-information-system',
     accent: '#6c63ff',
   },
@@ -64,7 +64,7 @@ export const PROJECTS: Project[] = [
       'A collaborative Kanban project management tool that enables teams to organize tasks, share boards, collaborate in real time, add rich-text notes, and track project activity in one visual workspace.',
     tags: ['Next.js', 'TypeScript', 'Liveblocks', 'TipTap', 'Drizzle ORM', 'PostgreSQL'],
     year: '2023',
-    image: 'Prism.jpg',
+    image: 'Prism1.jpg',
     link: 'https://github.com/jmdev-git/Prism',
     accent: '#00b4d8',
   },
@@ -111,6 +111,18 @@ export const PROJECTS: Project[] = [
     tags: ['Nextjs', 'Postgresql', 'Docker', 'Typescript', 'Nginx', 'WebRTC', 'HLS', 'MediaMTX', 'Websocket', 'Redis'],
     year: '2023',
     image: 'Pulse.jpg',
+    link: '#',
+    accent: '#00b4d8',
+    private: true
+  },
+  {
+    id: 'p10',
+    title: 'Bhansali Stainless',
+    description:
+      'A B2B industrial website showcasing stainless steel flanges, technical specifications, material grades, compliance standards, and export details, with an integrated inquiry system for streamlined client and sales management.',
+    tags: ['Nextjs', 'GTM', 'Docker', 'Typescript', 'Framer Motion', 'Tailwind CSS', 'CRM'],
+    year: '2023',
+    image: 'BhansaliStainless.jpg',
     link: '#',
     accent: '#00b4d8',
     private: true
