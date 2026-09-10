@@ -2874,3 +2874,110 @@ body {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* ── Audio Player ────────────────────────────────────────────────────────── */
+.ap-wrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 100px;
+  padding: 8px 14px 8px 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Play/Pause button — black circle */
+.ap-play {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--black);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.ap-play:hover {
+  background: #333;
+  transform: scale(1.08);
+}
+
+/* Label */
+.ap-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #111;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+/* Mute button */
+.ap-mute {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.ap-mute:hover {
+  color: #111;
+}
+
+/* Animated sound wave bars */
+.ap-wave {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 18px;
+}
+
+.ap-wave__bar {
+  display: block;
+  width: 3px;
+  border-radius: 2px;
+  background: #6C41EB;
+  animation: ap-bounce 0.8s ease-in-out infinite alternate;
+}
+
+.ap-wave__bar:nth-child(1) { height: 6px; }
+.ap-wave__bar:nth-child(2) { height: 14px; }
+.ap-wave__bar:nth-child(3) { height: 10px; }
+.ap-wave__bar:nth-child(4) { height: 6px; }
+
+@keyframes ap-bounce {
+  from { transform: scaleY(0.4); }
+  to   { transform: scaleY(1); }
+}
+
+@media (max-width: 600px) {
+  .ap-wrap {
+    bottom: 16px;
+    right: 16px;
+    padding: 7px 12px 7px 7px;
+  }
+
+  .ap-play {
+    width: 32px;
+    height: 32px;
+  }
+
+  .ap-label {
+    font-size: 0.72rem;
+  }
+}

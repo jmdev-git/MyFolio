@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Bebas_Neue, Luckiest_Guy } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/footer/Footer";
+import AudioPlayer from "./components/audio/AudioPlayer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         {children}
         <Footer />
+        <AudioPlayer />
       </body>
     </html>
   );
