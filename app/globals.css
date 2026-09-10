@@ -2883,20 +2883,20 @@ body {
   z-index: 500;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 100px;
-  padding: 8px 14px 8px 8px;
+  padding: 5px 10px 5px 5px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* Play/Pause button — black circle */
 .ap-play {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--black);
   border: none;
@@ -2980,4 +2980,26 @@ body {
   .ap-label {
     font-size: 0.72rem;
   }
+}
+
+/* ── Audio Player drag hint ──────────────────────────────────────────────── */
+.ap-drag-hint {
+  display: grid;
+  grid-template-columns: repeat(2, 4px);
+  gap: 3px;
+  padding: 0 4px 0 2px;
+  opacity: 0.25;
+  flex-shrink: 0;
+}
+
+.ap-drag-hint span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #000;
+  display: block;
+}
+
+.ap-wrap:active {
+  cursor: grabbing;
 }
