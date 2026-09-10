@@ -39,7 +39,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c4',
-    src: 'Prism.jpg',
+    src: 'Prism1.jpg',
     alt: 'Dark code editor',
     style: { top: '80%', left: '22%', width: 175, height: 130 },
     rotate: 5,
@@ -80,7 +80,7 @@ export const CARD_DATA = [
   },
   {
     id: 'c8',
-    src: 'BMIS.jpg',
+    src: 'BMIS1.jpg',
     alt: 'Server and cloud setup',
     style: { top: '65%', right: '5%', width: 165, height: 140 },
     rotate: 4,
