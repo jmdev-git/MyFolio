@@ -112,7 +112,7 @@ export default function AudioPlayer() {
 
             {/* Label */}
             <span className="ap-label">
-              {playing ? 'Playing intro...' : 'Hear my intro'}
+              {playing ? 'Playing...' : 'Who I Am?'}
             </span>
 
             {/* Sound wave when playing */}
