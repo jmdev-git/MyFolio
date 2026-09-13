@@ -127,7 +127,7 @@ export default function AboutSection() {
         <motion.div className="about-body-group" {...fadeUp(0.1, inView)}>
           <p className="about-label">Who I Am</p>
           <p className="about-body">
-            Think of me like a house builder. I do the hidden work underneath, like the plumbing. I also do the visible work, like painting the walls. I keep things simple and focus purely on what solves your specific problems.
+            Hi, I’m John Mark Depaclayon, a Full Stack Web Developer from Philippines. I specialize in building end-to-end web applications. Lately, my main focus has been shifting toward becoming an Agentic AI Builder—I love taking my full-stack foundation and using it to build autonomous, intelligent AI agents that can solve complex workflows on their own.
           </p>
         </motion.div>
 
